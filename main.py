@@ -14,7 +14,12 @@ if __name__ == "__main__":
     while True:
         with sr.Microphone() as source:
             print("Listening...")
-            audio = recognizer.listen(source)
+            """
+            timeout waits the given amount of seconds until an error appears
+            phrase_time_limit waits for the amount of seconds before converting
+            """
+            audio = recognizer.listen(source)#, timeout=3, phrase_time_limit=5)
+            print("Recognizing...")
             try:
                 text = recognizer.recognize_google(audio)
                 print("You said: ", text)
